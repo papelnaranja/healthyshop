@@ -35,12 +35,13 @@
     <%= form.label :description %>
     <%= form.text_field :description %>
   </div>
-
-  <div class="field">
-    <%= form.label :status %>
-    <%= form.text_field :status %>
-  </div>
-
+  <% if current_user.role == "admin" %>
+    <div class="field">
+      <%= form.label :state %>
+      <%= form.select :state, options_for_select([["Draft", :draft],["Publicado",:published],["Escondido",:hidden]], params[:state] ) %>
+    </div>
+    <% end %>
+  
   <div class="field">
     <%= form.label :address %>
     <%= form.text_field :address %>

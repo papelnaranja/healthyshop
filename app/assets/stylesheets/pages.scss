@@ -1,0 +1,11 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.avatar {
+    display: block;
+    border-radius: 50%;
+    overflow:hidden;
+    height: 49px;
+    width: 49px;
+    margin-right:10px;
+}
