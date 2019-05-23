@@ -38,7 +38,7 @@ class ShopsController < ApplicationController
   # POST /shops.json
   def create
     @shop = Shop.new(shop_params)
-    @shop.user_id = current_user.id
+    #@shop.user_id = current_user.id
 
     respond_to do |format|
       if @shop.save
