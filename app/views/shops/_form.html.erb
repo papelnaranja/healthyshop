@@ -38,7 +38,7 @@
   <% if current_user.role == "admin" %>
     <div class="field">
       <%= form.label :state %>
-      <%# form.select :state, options_for_select([["Draft", :draft],["Publicado",:published],["Escondido",:hidden]], params[:state] ) %>
+      <% form.select :state, options_for_select([["Draft", :draft],["Publicado",:published],["Escondido",:hidden]], params[:state] ) %>
     </div>
     <% end %>
   
