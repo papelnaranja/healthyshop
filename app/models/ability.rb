@@ -7,16 +7,13 @@ class Ability
       user ||= User.new # guest user (not logged in)
       can :read, Shop
       can :edit, Shop, user_id: user.id
+      can :create, Shop
       if user.admin?
         can :manage, :all
       else
         can :read, :all
       end
-      if user.client?
-        can :read, Shop
-        can :edit, Shop, user_id: user.id
-        can :create, Shop
-      end
+
     #
     # The first argument to `can` is the action you are giving the user
     # permission to do.

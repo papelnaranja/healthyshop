@@ -19,15 +19,15 @@
     </ul>
     <ul class="navbar-nav">
         <% if user_signed_in? %>
-        <li class="nav-item d-flex justify-content-start">
-            <% if current_user.avatar != nil %>
-              <div class="avatar"><%= image_tag current_user.sized(:avatar)  %></div> 
-            <% end %>
-            <%= current_user.name %>
-            |
-            <%= current_user.role %>
+          <li class="nav-item d-flex justify-content-start">
+              <% if current_user.avatar != nil %>
+                <div class="avatar"><%= image_tag current_user.sized(:avatar)  %></div> 
+              <% end %>
+              <%= current_user.name %>
+              |
+              <%= current_user.role %>
 
-        </li>
+          </li>
         <% end %>
 
 
