@@ -2,14 +2,14 @@
 
 <h1>Shops</h1>
 
-<!--
-<form action="<%# shops_path %>" method="get" class="form-inline">
+
+<form action="<%= shops_path %>" method="get" class="form-inline">
   <div class="form-group">
     <label for="q">Busqueda</label>
     <input type="text" name="q" class="form-control">
   </div>
 </form>
--->
+
 <table class="table-striped table">
   <thead>
     <tr>
@@ -36,7 +36,7 @@
         <td><%= shop.address %></td>
         <td><%= link_to 'Show', shop %></td>
         <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><%= link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><% link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>
