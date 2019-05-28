@@ -12,11 +12,11 @@ class ShopsController < ApplicationController
   def index
     @shops = Shop.all.published    
     
-    # @shops = if params[:q].present?
-    #           Shop.where("name like ?", "%#{params[:q]}%")
-    #       else
-    #         Shop.all.published  
-    #       end
+    @shops = if params[:q].present?
+              Shop.where("name like ?", "%#{params[:q]}%")
+          else
+            Shop.all.published  
+          end
 
   end
   # GET /shops/1
