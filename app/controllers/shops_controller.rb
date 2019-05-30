@@ -1,7 +1,7 @@
 class ShopsController < ApplicationController
   before_action :set_shop, only: [:show, :edit, :update, :destroy]
-  before_action :edit_my_shop, only: [:edit]
-  before_action :delete_shop, only: [:destroy]
+  #before_action :edit_my_shop, only: [:edit]
+  #before_action :delete_shop, only: [:destroy]
   before_action :authenticate_user!
   load_and_authorize_resource
 
@@ -10,13 +10,18 @@ class ShopsController < ApplicationController
   # GET /shops
   # GET /shops.json
   def index
-    @shops = Shop.all.published    
+    @shops = Shop.all.published
+
+    @hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
+      marker.lat shop.latitude
+      marker.lng shop.longitude
+    end    
     
-    @shops = if params[:q].present?
-              Shop.where("name like ?", "%#{params[:q]}%")
-          else
-            Shop.all.published  
-          end
+    # @shops = if params[:q].present?
+    #           Shop.where("name like ?", "%#{params[:q]}%")
+    #       else
+    #         Shop.all.published  
+    #       end
 
   end
   # GET /shops/1
@@ -87,14 +92,14 @@ class ShopsController < ApplicationController
       params.require(:shop).permit(:longitude, :latitude, :name, :photo, :description, :state, :address)
     end
 
-    def edit_my_shop 
-      if @shop.user_id != current_user.id && current_user.role != "admin"
-        redirect_to shops_url
-      end
-    end
-    def delete_shop
-      if current_user.role != "admin"
-        redirect_to shops_url
-      end
-    end
+    # def edit_my_shop 
+    #   if @shop.user_id != current_user.id && current_user.role != "admin"
+    #     redirect_to shops_url
+    #   end
+    # end
+    # def delete_shop
+    #   if current_user.role != "admin"
+    #     redirect_to shops_url
+    #   end
+    # end
 end
