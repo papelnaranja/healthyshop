@@ -7,7 +7,7 @@ gem 'cancancan'
 gem "mini_magick" ,'~> 4.8'
 gem  'webpacker'
 gem 'dotenv-rails', groups: [:development, :test, :production]
-gem 'aws-sdk-s3'
+gem 'aws-sdk-s3' , require: false
 gem 'geocoder'
 gem 'gmaps4rails'
 gem 'faker'
