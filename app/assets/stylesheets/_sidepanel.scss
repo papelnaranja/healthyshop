@@ -1,0 +1,19 @@
+div#sidepanel {
+    display: block;
+    background-color: #fff;
+    width: 400px;
+    position: fixed;
+    top: 0;
+    z-index: 999;
+    max-width: 100%;
+    padding: 1rem;
+    height: auto;
+        overflow-y: scroll;
+    top: 0;
+    bottom: 0;
+
+    box-shadow: 0px -1px 6px rgba(78, 78, 78, 0.6);
+}
+#sidepanel img {
+    max-width:200px;
+}

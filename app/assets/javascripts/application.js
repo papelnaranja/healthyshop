@@ -22,6 +22,13 @@
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
-    
-    $("#main-nav").sticky({ topSpacing: 0 });
+    $('#esconder').click(function (e) { 
+        e.preventDefault();
+        $('#sidepanel').hide();
+    });
+    $('#mostrar').click(function (e) {
+        e.preventDefault();
+        $('#sidepanel').show();
+    });
+    //$("#main-nav").sticky({ topSpacing: 0 });
 })

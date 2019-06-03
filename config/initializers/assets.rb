@@ -10,6 +10,8 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 
 Rails.application.config.assets.paths << Rails.root.join('vendor','ico')
 Rails.application.config.assets.paths << Rails.root.join('vendor','images')
+Rails.application.config.assets.paths << Rails.root.join('vendor','css')
+
 
 # Precompile additional assets.
 # application.js, application.css, and all non-JS/CSS in the app/assets

@@ -1,0 +1,49 @@
+
+<nav  id="navigation" class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="<%= root_path %>">
+    <img src="<%= asset_path('logo-1.png') %>" alt="logo" class="nav-brand">
+  </a>
+  <button class="navbar-toggler-icon navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Navegación">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
+  </button>
+
+
+  <div class="collapse navbar-collapse" id="navbarMain">
+    <ul class="navbar-nav">
+      <% if !user_signed_in? %>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_session_path %>">Iniciar Sesion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= new_user_registration_path %>">Registrarse</a>
+        </li>
+      <% end %>
+      <% if user_signed_in? %>
+        <li class="nav-item d-flex justify-content-start">
+          <% if current_user.avatar.attached? %>
+              <%# image_tag current_user.sized(:avatar) | current_user.avatar   %>
+              <div class="avatar"><%# image_tag current_user.sized(:avatar) %></div> 
+          <% end %>
+            <span><%= current_user.name %> (<%= current_user.role %>)</span>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="<%= shops_path %>"> Ver app</a>
+        </li>
+       <li class="nav-item">
+        <a class="nav-link" href="<%= destroy_user_session_path %>" data-method="DELETE">Salir</a>
+       </li>
+      <% if current_user.role == "admin" %>
+        <li class="nav-item"><%= link_to 'Backoffice', backoffices_path, class:'nav-link' %></li>
+      <% end %>
+      
+      <% end %>
+    
+    </ul>
+     <%# aca va el otro menu %>
+
+  </div>
+</nav>

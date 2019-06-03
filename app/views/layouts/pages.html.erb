@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title> Healthyshop</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+    <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>">
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+     <!-- only if you need custom infoboxes -->
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+ 
+  </head>
+  <body>
+  
+    <%= render 'layouts/nav-page' %>
+  
+    <%= yield %>
+    
+
+  </body>
+</html>

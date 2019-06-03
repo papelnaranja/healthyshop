@@ -1,31 +1,34 @@
 <section id="main" style="background-image:url(<%= asset_path('bg-1.jpg') %>)">
     <div class="container d-flex align-items-center">
-    <div class="box">
+    <div class="box-landing">
         <img src="<%= asset_path('logo-2.png') %>" alt="logo" class="logo-landing">
         <h2>Encuentra las tiendas de alimentos sanos más creca de ti</h2>
         <p class="bajada">Solo te tienes que registarar</p>
-        <a href="<%= new_user_registration_path %>" class="btn btn-primary">Registrarse</a>
-        <a href="<%= new_user_session_path %>">Ingresar</a>
+        <a href="<%= new_user_registration_path %>" class="btn btn-primary btn-block">Registrarse</a>
+        <a href="<%= shops_path %>" class="btn-link btn-block">Ingresar</a>
     </div>
     
     </div>
 </section>
 <section class="about">
 <div class="container">
-<%= link_to('ver app', shops_path)  %> 
-<p class="text">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin eget consequat nisl. Duis consectetur rutrum libero, non posuere elit tincidunt at. Mauris lacus ex, gravida mollis neque eu, elementum pulvinar erat. Maecenas non fringilla dolor. Sed a efficitur mi. Nulla et lacus iaculis, molestie dui mollis, placerat augue. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean faucibus nulla dignissim ultrices venenatis. Aenean sodales sem at tellus tempus lobortis. Nulla ac elit nec ipsum fringilla ultricies sit amet vitae nulla. Ut tempus mauris augue, sed congue mi venenatis nec. Duis mattis ipsum in dui bibendum, in tristique tortor faucibus. Vivamus rutrum nunc vitae ultrices congue. Nullam faucibus bibendum elit. Phasellus feugiat, eros sed rutrum suscipit, odio neque facilisis est, a volutpat ex enim ut arcu.
 
-Aenean facilisis elementum lobortis. Nam pretium lacinia lectus et lacinia. Vivamus euismod diam sit amet orci accumsan imperdiet. Suspendisse at mauris non dui hendrerit tristique at quis orci. Nullam in feugiat mi. Integer euismod massa eros, quis porta lorem facilisis at. Curabitur id arcu hendrerit, rutrum massa in, tincidunt augue. Mauris eget cursus risus, eu varius augue. Sed lacinia urna nibh, vitae dignissim lacus lacinia eget. Suspendisse vulputate luctus nisi non luctus. Nulla congue, nibh nec pretium viverra, ex magna commodo est, vitae mattis libero ex quis est. Nam placerat purus id metus ullamcorper, at faucibus risus suscipit. Proin lacus ipsum, vehicula ut augue eget, fringilla scelerisque mi. Proin ut dolor ut odio ultrices consectetur eget ac lectus. Aliquam tempus tortor non sapien blandit, et laoreet velit tincidunt.
+    <div class="row">
+    <div class="col-md-3">
+        <img src="<%= asset_path('mapa.png') %>" alt="mapa" class="img-fluid">
+    </div>
+    <div class="col-md-9">
+        <div class="section-title">
+        <h2>¿Cómo funciona?</h2>
+            </div>
+        <p class="text">
+        Busca una tiendas que vendan comida sana, cerca tuyo, eso incluye frutas, verduras, tostadurias y tiendas de productos organicos.
+        </p>
+        <h3>¿Conoces una tienda?</h3>
+        <p class="text"> Nuestra aplicación funciona con el aporte de todos sus usuarios, por lo que pueden enviar una solicitud para agregarla al mapa sano de Santiago</p>
+    </div>
+    </div>
 
-Curabitur tristique imperdiet massa, non congue nisi consectetur elementum. Curabitur pellentesque turpis eget libero efficitur rutrum. Curabitur porttitor, purus et porta efficitur, elit nulla condimentum enim, id imperdiet lectus libero consequat nisl. Maecenas nisi sapien, tristique a nunc nec, ullamcorper feugiat est. Ut faucibus rhoncus quam et tempus. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Aenean rhoncus condimentum est, nec rhoncus lectus dignissim eu.
-
-Nullam varius non purus ac interdum. Sed congue tellus ac eros convallis pellentesque. Pellentesque eleifend sapien quis sem venenatis, quis mollis felis cursus. Curabitur hendrerit augue at commodo interdum. Aenean tempus consectetur dui, a auctor nisl sollicitudin et. Pellentesque volutpat tellus ut ipsum mattis scelerisque. Etiam in dolor libero. Pellentesque at nulla sed mi imperdiet suscipit. Phasellus sed imperdiet dui. Nulla sit amet placerat mauris, nec posuere sapien. Mauris varius turpis sit amet urna laoreet consequat sed eu justo. Morbi pellentesque ex eu ante bibendum auctor. Vestibulum enim justo, tempus at risus vel, pulvinar blandit lectus. Suspendisse porta ipsum cursus, semper mi eget, sagittis nisl.
-
-Duis lobortis tempor metus, vitae accumsan odio vulputate eget. Nulla semper lacus at mauris ultricies luctus. Phasellus semper maximus dapibus. Praesent eleifend vestibulum congue. Nunc elementum ex in lorem pellentesque finibus. Quisque ultrices, ligula sit amet egestas fermentum, orci eros tempus ipsum, ac tincidunt dolor orci nec ante. Integer facilisis felis et ligula vehicula, vel suscipit enim hendrerit. Donec semper, enim id aliquam tincidunt, eros ex egestas ex, eu dignissim felis sapien eu nisl. Nunc quis magna sit amet nulla lobortis scelerisque ac eget nunc.
-
-
-</p>
 </div>
 </section>
 

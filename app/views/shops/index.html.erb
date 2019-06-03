@@ -1,17 +1,17 @@
-<p id="notice"><%= notice %></p>
+<%= render 'sidepanel' %>
+<div class="page-shop mt-4-rem">
 
-<h1>Shops</h1>
-
-<div style='width: 100%;'>
-  <div id="map" style='width: 100%; height: 100vh;'></div>
-</div>
-
-<form action="<%= shops_path %>" method="get" class="form-inline">
-  <div class="form-group">
-    <label for="q">Busqueda</label>
-    <input type="text" name="q" class="form-control">
+  <%# if @shops.error.any? %>
+    <div class="alert alert-warning">
+      <%= notice %>
+    </div>
+  <%# end %>
+  <div style='width: 100wv;'>
+    <div id="map" style='width: 100wv; height: 100vh;'></div>
   </div>
-</form>
+
+<div class="table-section">
+  <div class="container-fluid">
 
 <table class="table-striped table">
   <thead>
@@ -45,53 +45,7 @@
   </tbody>
 </table>
 
-<br>
-
-
-<div class="form-wrap">
-<%= form_with(model: @shop , local: true, scope: "shop") do |form| %>
-
-  <div class="field">
-    <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
-  </div>
-
-  <div class="field">
-    <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
-  </div>
-
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name %>
-  </div>
-
-  <div class="field">
-    <%= form.label :photo %>
-    <%= form.text_field :photo %>
-  </div>
-
-  <div class="field">
-    <%= form.label :description %>
-    <%= form.text_field :description %>
-  </div>
-  <% if current_user.role == "admin" %>
-    <div class="field">
-      <%= form.label :state %>
-      <%= form.select :state, options_for_select([["Draft", :draft],["Publicado",:published],["Escondido",:hidden]], params[:state] ) %>
-    </div>
-  <% end %>
-  
-  <div class="field">
-    <%= form.label :address %>
-    <%= form.text_field :address %>
-  </div>
-
-  <div class="actions">
-    <%= form.submit %>
-  </div>
-<% end %>
-
+</div>
 </div>
 
   <div id="tiendas">
@@ -99,8 +53,7 @@
   </div>
 
 
-<%= link_to 'New Shop', new_shop_path %>
-
+</div>
 <script>
 var userLat;
 var userLong;
