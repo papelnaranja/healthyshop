@@ -1,0 +1,196 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require bootstrap/dist/css/bootstrap
+ *= require jquery.sticky/dist/sticky
+ *= require_tree .
+ *= require_self
+
+*/
+
+$secondary: #E70059;
+
+//Screen sizes
+$screen-extra-small: 320px;
+//bootstraps 4 breaks point - 
+$screen-small: 576px;
+$screen-middle: 768px;
+$screen-large: 992px;
+$screen-extralarge: 1200px;
+
+$element-size-sm: 1em;
+$element-size-md: 1.5em;
+$element-size-lg: 2em;
+$element-size-xl: 4em; 
+
+// Extra Small devices (landscape phones, 320 and up)
+@mixin min-xs {
+    @media (min-width: $screen-extra-small) {
+        @content;
+    }
+}
+
+// Small devices (landscape phones, 576px and up)
+@mixin min-sm {
+    @media (min-width: $screen-small) {
+        @content;
+    }
+}
+
+// Medium devices (tablets, 768px and up)
+@mixin min-md {
+    @media (min-width: $screen-middle) {
+        @content;
+    }
+}
+
+// Large devices (desktops, 992px and up)
+@mixin min-lg {
+    @media (min-width: $screen-large) {
+        @content;
+    }
+}
+
+// Extra large devices (large desktops, 1200px and up)
+@mixin min-xl {
+    @media (min-width: $screen-extralarge) {
+        @content;
+    }
+}
+
+// special size 
+@mixin min-sp {
+    @media (min-width: 993px) {
+        @content;
+    }
+}
+
+
+
+
+
+// hamburgesa loca
+#main-nav  button.navbar-toggler {
+    display: block;
+    position: relative;
+    @include min-lg {
+        display: none;
+    }
+
+    &:focus, &:active {
+         outline:0;
+    }
+    span {
+        display: block;
+        background-color:$secondary;
+        height: 3px;
+        width: 25px;
+        margin-top: 4px;
+        margin-bottom: 4px;
+        -webkit-transform: rotate(0deg);
+        -moz-transform: rotate(0deg);
+        -o-transform: rotate(0deg);
+        transform: rotate(0deg);
+        position: relative;
+        left: 0;
+        opacity: 1;
+        &:nth-child(1),&:nth-child(3) {
+            -webkit-transition: transform .35s ease-in-out;
+            -moz-transition: transform .35s ease-in-out;
+            -o-transition: transform .35s ease-in-out;
+            transition: transform .35s ease-in-out;
+        }
+    }
+
+    &:not(.collapsed) {
+        span:nth-child(1) {
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            -webkit-transform: rotate(135deg);
+            -moz-transform: rotate(135deg);
+            -o-transform: rotate(135deg);
+            transform: rotate(135deg);
+            opacity: 0.9;
+        }
+        span:nth-child(2) {
+            height: 12px;
+            visibility: hidden;
+            background-color: transparent;
+        }
+        span:nth-child(3) {
+            position: absolute;
+            left: 12px;
+            top: 10px;
+            -webkit-transform: rotate(-135deg);
+            -moz-transform: rotate(-135deg);
+            -o-transform: rotate(-135deg);
+            transform: rotate(-135deg);
+            opacity: 0.9;
+        }
+    }
+
+}
+
+// fin hamburguesa loca
+
+#navbarMain {
+    background-color: #fff;
+    width: 100vw;
+    /* position: relative; */
+    margin: 0 -1rem;
+    padding: 1rem 1rem;
+    @include min-md {
+        margin:0px;
+        padding: 0px;
+    background-color: transparent;
+
+    }
+}
+#main-nav {
+    position: fixed;
+    width: 100%;
+    background-color: rgba(255,255,255,1)!important;
+
+    @include min-lg {
+    background-color: rgba(255,255,255,0.5)!important;
+
+    }
+}
+
+#main-nav.js-sticky-top {
+    background-color: rgba(255,255,255,1)!important;
+
+}
+ .nav-brand{
+    height: auto;
+    width: 146px;
+ }
+
+ .avatar {
+    display: block;
+    border-radius: 50%;
+    overflow:hidden;
+    height: 49px;
+    width: 49px;
+    margin-right:10px;
+    background-image: url()
+}
+
+.btn-primary {
+    background-color: $secondary;
+    color: white;
+    border-color: $secondary;
+    &:hover, &:active , &:focus {
+        background-color: darken($secondary , 10%);
+    }
+}

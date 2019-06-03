@@ -4,6 +4,7 @@
     <title> Healthyshop</title>
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
+    <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     
     <script src="//maps.google.com/maps/api/js?key=AIzaSyCSQscXqUOBCQ89ftN6aknUwhoBbp1unCo"></script>
@@ -16,10 +17,10 @@
   <body>
   
     <%= render 'layouts/nav' %>
-    <div class="container-fluid">
-      <%= yield %>
+  
+    <%= yield %>
     
-    </div>
+  
 
   </body>
 </html>

@@ -2,14 +2,16 @@ source 'https://rubygems.org'
 git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
+gem 'dotenv-rails', groups: [:development, :test, :production]
+
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'cancancan'
 gem "mini_magick" ,'~> 4.8'
 gem  'webpacker'
-gem 'dotenv-rails', groups: [:development, :test, :production]
 gem 'aws-sdk-s3'
 gem 'gmaps4rails'
 gem 'faker'
+gem 'omniauth-facebook'
 gem 'font-awesome-sass', '~> 4.7.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.2.3'

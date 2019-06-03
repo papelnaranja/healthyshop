@@ -17,4 +17,11 @@
 //= require turbolinks
 //= require underscore/underscore
 //= require gmaps/google
+//= require jquery.sticky/dist/jquery.sticky
+
 //= require_tree .
+
+$(document).on('turbolinks:load', function () {
+    
+    $("#main-nav").sticky({ topSpacing: 0 });
+})

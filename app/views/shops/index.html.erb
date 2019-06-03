@@ -102,11 +102,22 @@
 <%= link_to 'New Shop', new_shop_path %>
 
 <script>
+var userLat;
+var userLong;
+
+function currentPosition(position) {
+  userLat = position.coords.latitude;
+  userLong = position.coords.longitude;
+  console.log('More or less ' + position.coords.accuracy + ' meters.');
+}
+
+navigator.geolocation.getCurrentPosition(currentPosition);
+
 handler = Gmaps.build('Google');
 handler.buildMap({
     provider: {
       center: new google.maps.LatLng({lat: 0, lng: 0}),
-      zoom: 1
+      zoom: 15
     },
     internal: {
       id: 'map'
@@ -114,33 +125,34 @@ handler.buildMap({
 },
   function(){
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
-    google.maps.event.addListener(handler.getMap(), "click", function(){
-      var latitude = handler.getMap().getCenter().lat();
-      var longitude = handler.getMap().getCenter().lng();
-      console.log(latitude);
-      console.log(longitude);
+    google.maps.event.addListener(handler.getMap(), "click", function(event){
+      var latitude = event.latLng.lat();
+      var longitude = event.latLng.lng();      
+      console.log(latitude, longitude);
       $('#shop_longitude').val(longitude);
       $('#shop_latitude').val(latitude);
-
+      addMarker(event.latLng);
+      //console.log(event.latLng)
     });
-    // google.maps.event.addListener(handler.getMap(), "center_changed", function(){
-    // console.log("cambio");
-    // google.maps.event.addListener(handler.getMap(), "center_changed", function(){
-    //   var latitude = handler.getMap().getCenter().lat();
-    //   var longitude = handler.getMap().getCenter().lng();
-    //   console.log(latitude);
-    //   console.log(longitude);
 
-    //   $.ajax({
-    //     type: "GET",
-    //     url: "/shops",
-    //     //no funciona ):
-    //     data: {latitude: latitude, longitude: longitude},
-    //     dataType: "script"
-    //   });
-
-    // });
   }
 );
+
+var userMarker;
+function addMarker(location) {
+  if (userMarker) {
+    userMarker.setPosition(location);
+  } else {
+    userMarker = new google.maps.Marker({
+      position: location,
+      map: handler.getMap()
+    });
+  }
+
+}
+
+
+
+
 
 </script>

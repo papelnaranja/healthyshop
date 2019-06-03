@@ -1,11 +1,18 @@
 // Place all the styles related to the pages controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-.avatar {
-    display: block;
-    border-radius: 50%;
-    overflow:hidden;
-    height: 49px;
-    width: 49px;
-    margin-right:10px;
+#main {
+    display:flex;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    min-height: 100vh;
+}
+
+.box {
+    max-width: 100%;
+    width: 500px;
+}
+img.logo-landing {
+    width: 250px;
 }

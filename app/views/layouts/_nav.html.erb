@@ -1,10 +1,18 @@
-<nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" href="#"> HealthyShop</a>
-  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
+
+<nav  id="main-nav"class="navbar navbar-expand-lg">
+  <a class="navbar-brand" href="<%= root_path %>">
+    <img src="<%= asset_path('logo-1.png') %>" alt="logo" class="nav-brand">
+  </a>
+  <button class="navbar-toggler-icon navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Navegación">
+
+    <span></span>
+    <span></span>
+    <span></span>
+
   </button>
 
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+  <div class="collapse navbar-collapse" id="navbarMain">
     <ul class="navbar-nav mr-auto">
 
       <li class="nav-item">
@@ -23,7 +31,7 @@
           <li class="nav-item d-flex justify-content-start">
               <% if current_user.avatar.attached? %>
             <%# image_tag current_user.sized(:avatar) | current_user.avatar   %>
-                <div class="avatar"><%= image_tag current_user.sized(:avatar) %></div> 
+                <div class="avatar"><%# image_tag current_user.sized(:avatar) %></div> 
 
               <% end %>
               <%= current_user.name %>
@@ -44,5 +52,3 @@
     <% end %>
   </div>
 </nav>
-
- 
