@@ -1,6 +1,12 @@
 <h1>Editing Shop</h1>
-
-<%= render 'form', shop: @shop %>
-
+<div class="row">
+<div class="col-md-4">
+<div class="card">
+    <div class="card-body">
+    <%= render 'form', shop: @shop %>
+    </div>
+    </div>
+</div>
+</div>
 <%= link_to 'Show', @shop %> |
 <%= link_to 'Back', shops_path %>

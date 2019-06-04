@@ -15,6 +15,7 @@ class ShopsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
       marker.lat shop.latitude
       marker.lng shop.longitude
+      marker.infowindow shop.name 
     end    
     
     # @shops = if params[:q].present?
@@ -27,21 +28,28 @@ class ShopsController < ApplicationController
   # GET /shops/1
   # GET /shops/1.json
   def show
+
+    render layout: "shop-edit"
   end
 
   # GET /shops/new
   def new
     @shop = Shop.new
+    render layout: "shop-edit"
   end
 
   # GET /shops/1/edit
   def edit
+    
     # si tienda.user == current_user
+    render layout: "shop-edit"
+
   end
 
   # POST /shops
   # POST /shops.json
   def create
+
     @shop = Shop.new(shop_params)
     #@shop.user_id = current_user.id
 
@@ -54,6 +62,8 @@ class ShopsController < ApplicationController
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
+
+
   end
 
   # PATCH/PUT /shops/1
@@ -69,6 +79,8 @@ class ShopsController < ApplicationController
         format.json { render json: @shop.errors, status: :unprocessable_entity }
       end
     end
+ 
+
   end
 
   # DELETE /shops/1

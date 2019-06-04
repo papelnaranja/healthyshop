@@ -1,13 +1,13 @@
 <%= render 'sidepanel' %>
 <div class="page-shop mt-4-rem">
 
-  <%# if @shops.error.any? %>
+  <% if notice %>
     <div class="alert alert-warning">
       <%= notice %>
     </div>
-  <%# end %>
+  <% end %>
   <div style='width: 100wv;'>
-    <div id="map" style='width: 100wv; height: 100vh;'></div>
+    <div id="map" style='width: 100wv; height: calc(100vh - 100px);'  ></div>
   </div>
 
 <div class="table-section">
@@ -55,28 +55,43 @@
 
 </div>
 <script>
-var userLat;
-var userLong;
 
-function currentPosition(position) {
-  userLat = position.coords.latitude;
-  userLong = position.coords.longitude;
+
+$(document).on('turbolinks:load', function () {
+
+function displayOnMap(position){
+  var Marker = handler.addMarker({
+    lat: position.coords.latitude,
+    lng: position.coords.longitude,
+    picture: {
+        url: "<%= asset_path('icon-mini.png') %>",
+        width:  36,
+        height: 36
+    },
+  });
+  handler.map.centerOn(Marker);
   console.log('More or less ' + position.coords.accuracy + ' meters.');
-}
-
-navigator.geolocation.getCurrentPosition(currentPosition);
+  console.log(Marker)
+};
+    
 
 handler = Gmaps.build('Google');
+//currentPosition();
 handler.buildMap({
     provider: {
-      center: new google.maps.LatLng({lat: 0, lng: 0}),
+      center: new google.maps.LatLng({lat: -33, lng: -70}),
       zoom: 15
     },
     internal: {
       id: 'map'
     }
+    
 },
   function(){
+    
+    if(navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(displayOnMap)
+    }
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
     google.maps.event.addListener(handler.getMap(), "click", function(event){
       var latitude = event.latLng.lat();
@@ -85,12 +100,14 @@ handler.buildMap({
       $('#shop_longitude').val(longitude);
       $('#shop_latitude').val(latitude);
       addMarker(event.latLng);
-      //console.log(event.latLng)
+      console.log(event.latLng)
     });
 
   }
 );
 
+
+// Este código permite marcar solo un punto.
 var userMarker;
 function addMarker(location) {
   if (userMarker) {
@@ -104,7 +121,7 @@ function addMarker(location) {
 
 }
 
-
+});
 
 
 
