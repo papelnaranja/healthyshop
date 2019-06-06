@@ -36,6 +36,8 @@ class ShopsController < ApplicationController
   def new
     @shop = Shop.new
     render layout: "shop-edit"
+    byebug
+
   end
 
   # GET /shops/1/edit
@@ -51,11 +53,10 @@ class ShopsController < ApplicationController
   def create
 
     @shop = Shop.new(shop_params)
-    #@shop.user_id = current_user.id
-
+    @shop.user_id = current_user.id
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+        format.html { redirect_to shops_path, notice: 'Shop was successfully created.' }
         format.json { render :show, status: :created, location: @shop }
       else
         format.html { render :new }
@@ -88,7 +89,7 @@ class ShopsController < ApplicationController
   def destroy
     @shop.destroy
     respond_to do |format|
-      format.html { redirect_to shops_url, notice: 'Shop was successfully destroyed.' }
+      format.html { redirect_to backoffices_path, notice: 'Shop was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
