@@ -5,7 +5,7 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable,
           :omniauthable, :omniauth_providers => [:facebook]
   enum role:[:admin, :shopper, :client]
-  has_one_attached :avatar
+  #has_one_attached :avatar
  
   def self.from_omniauth(auth)
     

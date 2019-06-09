@@ -13,8 +13,12 @@ Rails.application.routes.draw do
   
   resources :backoffices
   resources :users
-  resources :shops
-
+  resources :shops do 
+    member do
+      post 'add_tag'
+      delete 'remove_tag/:tag_id', to: 'shops#remove_tag', as: 'remove_tag'
+    end
+  end
 
 
   # For details on the DSL available within this file, see http://guides.rubyonrails.org/routing.html
