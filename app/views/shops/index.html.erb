@@ -10,46 +10,15 @@
     <div id="map" style='width: 100wv; height: calc(100vh - 100px);'  ></div>
   </div>
 
-<div class="table-section">
-  <div class="container-fluid">
-
-<table class="table-striped table">
-  <thead>
-    <tr>
-      <th>Longitude</th>
-      <th>Latitude</th>
-      <th>Name</th>
-      <th>Photo</th>
-      <th>Description</th>
-      <th>Satate</th>
-      <th>Address</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shops.each do |shop| %>
-      <tr>
-        <td><%= shop.longitude %></td>
-        <td><%= shop.latitude %></td>
-        <td><%= shop.name %></td>
-        <td><%= shop.photo %></td>
-        <td><%= shop.description %></td>
-        <td><%= shop.state %></td>
-        <td><%= shop.address %></td>
-        <td><%= link_to 'Show', shop %></td>
-        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><% link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-</div>
-</div>
+  <% if current_user.role == 'admin' %>
+  <%= render 'all-shops' %>
+  <% else %>
+  <%= render 'my-shops' %>
+  <% end %>
+    
 
   <div id="tiendas">
-     
+
   </div>
 
 
@@ -58,6 +27,8 @@
 
 
 $(document).on('turbolinks:load', function () {
+
+
 
 function displayOnMap(position){
   var Marker = handler.addMarker({
@@ -78,6 +49,7 @@ function displayOnMap(position){
 handler = Gmaps.build('Google');
 //currentPosition();
 handler.buildMap({
+    disableDefaultUI: true,
     provider: {
       center: new google.maps.LatLng({lat: -33, lng: -70}),
       zoom: 15
@@ -85,6 +57,7 @@ handler.buildMap({
     internal: {
       id: 'map'
     }
+    
     
 },
   function(){
@@ -124,5 +97,17 @@ function addMarker(location) {
 });
 
 
+  $('[name="q"]').keyup(function (e) { 
+    $.ajax({
+      type: "get",
+      url: "<%= shops_url %>",
+      data: {q : $(this).val()},
+      dataType: "json",
+      success: function (response) {
+        
+      }
+    });
+    console.log()
+});
 
 </script>

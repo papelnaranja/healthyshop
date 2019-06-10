@@ -6,7 +6,8 @@ class BackofficesController < ApplicationController
   def index
     @shops = Shop.all
   end
-
-
+  def users 
+    @users = User.all
+  end
   
 end

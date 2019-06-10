@@ -22,13 +22,20 @@
         <li class="nav-item">
           <a class="nav-link" href="<%= new_user_registration_path %>">Registrarse</a>
         </li>
+
       <% end %>
+       <li class="nav-item">
+          <a class="nav-link" href="<%= backoffices_path %>">Tiendas</a>
+        </li>
+       <li class="nav-item">
+          <a class="nav-link" href="<%= backoffices_users_path %>">Usuarios</a>
+        </li>
       <% if user_signed_in? %>
         <li class="nav-item d-flex justify-content-start">
-          <% if current_user.avatar.attached? %>
+          <%# if current_user.avatar.attached? %>
               <%# image_tag current_user.sized(:avatar) | current_user.avatar   %>
               <div class="avatar"><%# image_tag current_user.sized(:avatar) %></div> 
-          <% end %>
+          <%# end %>
             <span><%= current_user.name %> (<%= current_user.role %>)</span>
         </li>
         <li class="nav-item">
