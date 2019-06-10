@@ -3,7 +3,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.5.1'
 gem 'dotenv-rails', groups: [:development, :test, :production]
-
+gem 'chartkick'
+gem 'groupdate'
 gem 'devise', git: 'https://github.com/plataformatec/devise.git'
 gem 'cancancan'
 gem "mini_magick" ,'~> 4.8'

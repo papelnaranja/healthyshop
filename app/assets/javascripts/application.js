@@ -18,17 +18,20 @@
 //= require underscore/underscore
 //= require gmaps/google
 //= require jquery.sticky/dist/jquery.sticky
-
+//= require chartkick
+//= require Chart.bundle
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
     $('#esconder').click(function (e) { 
         e.preventDefault();
         $('#sidepanel').hide();
+
     });
     $('#mostrar').click(function (e) {
         e.preventDefault();
         $('#sidepanel').show();
+        $('body').prependTo
     });
     //$("#main-nav").sticky({ topSpacing: 0 });
 })

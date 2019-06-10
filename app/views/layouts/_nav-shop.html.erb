@@ -1,10 +1,11 @@
 
 <nav  id="navigation" class="navbar navbar-expand-lg">
+  <button id="mostrar" ><i class="fa fa-align-left" aria-hidden="true"></i></button>
+
   <a class="navbar-brand" href="<%= root_path %>">
     <img src="<%= asset_path('logo-1.png') %>" alt="logo" class="nav-brand">
   </a>
   <% if user_signed_in? %>
-  <button id="mostrar" >mostrar</button>
   <% end %>
   <button class="navbar-toggler-icon navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbarMain" aria-controls="navbarMain" aria-expanded="false" aria-label="Navegación">
 

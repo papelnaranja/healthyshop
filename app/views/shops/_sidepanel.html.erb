@@ -1,11 +1,11 @@
 <div id="sidepanel">
-    <img src="<%= asset_path('logo-1.png') %>" alt="logo">
-    <button id="esconder">Esconder</button>
+    <button id="esconder"><i class="fa fa-align-left" aria-hidden="true"></i></button>
+    <img src="<%= asset_path('logo-1.png') %>" alt="logo" width="150">
     <div class="panel-section">
-        <form action="<%= shops_path %>" method="get" class="form-inline my-3">
+        <form action="<%= shops_path %>" method="get" class="my-3">
         <div class="form-group">
             <label for="q">Busqueda </label>
-            <input type="text" name="q" class="form-control ml-3">
+            <input type="text" name="q" class="form-control">
         </div>
         </form>
     </div>
@@ -29,10 +29,10 @@
                 <%= form.text_field :name ,class:'form-control' %>
             </div>
 
-            <div class="form-group">
+            <%# <div class="form-group">
                 <%= form.label :photo %>
-                <%= form.file_field :photo ,class:'form-control' %>
-            </div>
+                <%# form.file_field :photo ,class:'form-control' %>
+            <%# </div> %> 
 
             <div class="form-group">
                 <%= form.label :description %>
@@ -55,7 +55,6 @@
                 <%# link_to 'New Shop', new_shop_path %>
             </div>
             <% end %>
-            Lorem ipsum dolor, sit amet consectetur adipisicing elit. Commodi amet, earum atque sunt cum accusantium blanditiis molestias animi dolor perspiciatis ratione est fugiat minus vero beatae hic optio? Ipsum, soluta.
             </div>
             </div>
 
