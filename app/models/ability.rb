@@ -8,12 +8,13 @@ class Ability
       can :read, Shop
       can :create, Shop
       can :update, Shop
-      can :manage, Tag
       can :edit, Shop, user_id: user.id
+      can :add_tag, Shop
       if user.admin?
         can :manage, :all
       else
         can :read, :all
+        #can :manage, :tag
       end
 
     #

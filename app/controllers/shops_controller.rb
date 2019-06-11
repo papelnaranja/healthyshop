@@ -18,16 +18,16 @@ class ShopsController < ApplicationController
       marker.infowindow shop.name 
     end    
     @my_shops = []
-        @shops.each do |shop|
-          if shop.user_id == current_user .id
-            @my_shops << shop
-          end
+      @shops.each do |shop|
+      if shop.user_id == current_user .id
+        @my_shops << shop
+      end
     end
     @shops = if params[:q].present?
-              Shop.joins(:tags).where("shops.name like ? OR tags.name like ?", params[:q], params[:q])
-          else
-            Shop.all.published  
-          end
+       Shop.joins(:tags).where("shops.name like ? OR tags.name like ?", params[:q], params[:q])
+    else
+      Shop.all.published  
+    end
 
   end
   # GET /shops/1
