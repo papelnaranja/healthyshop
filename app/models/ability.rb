@@ -7,6 +7,7 @@ class Ability
       user ||= User.new # guest user (not logged in)
       can :read, Shop
       can :create, Shop
+      can :update, Shop
       can :manage, Tag
       can :edit, Shop, user_id: user.id
       if user.admin?

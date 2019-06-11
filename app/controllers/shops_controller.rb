@@ -17,12 +17,17 @@ class ShopsController < ApplicationController
       marker.lng shop.longitude
       marker.infowindow shop.name 
     end    
-    
-    # @shops = if params[:q].present?
-    #           Shop.where("name like ?", "%#{params[:q]}%")
-    #       else
-    #         Shop.all.published  
-    #       end
+    @my_shops = []
+        @shops.each do |shop|
+          if shop.user_id == current_user .id
+            @my_shops << shop
+          end
+    end
+    @shops = if params[:q].present?
+              Shop.joins(:tags).where("shops.name like ? OR tags.name like ?", params[:q], params[:q])
+          else
+            Shop.all.published  
+          end
 
   end
   # GET /shops/1
@@ -51,8 +56,8 @@ class ShopsController < ApplicationController
   def create
 
     @shop = Shop.new(shop_params)
-    @shop.user = current_user
-    @shop.address = Geocoder.coordinates(params[:address])
+    @shop.user_id = current_user.id
+    #@shop.address = Geocoder.coordinates(params[:address])
     respond_to do |format|
       if @shop.save
         format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
@@ -92,6 +97,19 @@ class ShopsController < ApplicationController
       format.json { head :no_content }
     end
   end
+
+  def add_tag
+    @shop.tags << Tag.new(name: params[:name]) 
+    redirect_to shops_path
+  end
+
+  def remove_tag
+    tag = Tag.find(params[:tag_id])
+    @shop.tags.delete(tag)
+    redirect_to shops_path
+  end
+
+
 
   private
     # Use callbacks to share common setup or constraints between actions.

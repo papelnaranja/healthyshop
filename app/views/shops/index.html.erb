@@ -29,7 +29,7 @@
 $(document).on('turbolinks:load', function () {
 
 
-
+// Crea el Marcador de la posición actual
 function displayOnMap(position){
   var Marker = handler.addMarker({
     lat: position.coords.latitude,
@@ -46,6 +46,7 @@ function displayOnMap(position){
 };
     
 
+// Crea el Mapa de google
 handler = Gmaps.build('Google');
 //currentPosition();
 handler.buildMap({
@@ -58,23 +59,49 @@ handler.buildMap({
       id: 'map'
     }
     
-    
 },
   function(){
     
+    // llama la función que crea la posición actual
     if(navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(displayOnMap)
     }
+    // Crea las tiendas guradadas en la base de datos
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
+    // Al hacer click genera una tienda nueva
     google.maps.event.addListener(handler.getMap(), "click", function(event){
       var latitude = event.latLng.lat();
       var longitude = event.latLng.lng();      
       console.log(latitude, longitude);
+      // Añade las coordenadas al formulario
       $('#shop_longitude').val(longitude);
       $('#shop_latitude').val(latitude);
+      var latitudLongitud = {lat: latitude, lng:longitude};
+      // llama a la creción del marcador de tienda
       addMarker(event.latLng);
+      // Crea la dirección en humano
+      var geocoder = new google.maps.Geocoder;
+      geocoder.geocode({'location': latitudLongitud}, function(results, status) {
+        if (status === 'OK') {
+          if (results[0]) {
+            $('#shop_address').val(results[0].formatted_address);
+            console.log('aqui'+ latitudLongitud.lat + latitudLongitud.lng );
+          } else {
+            window.alert('No results found');
+          }
+        } else {
+          window.alert('Geocoder failed due to: ' + status);
+        }
+      });
+
+
+
+
+      //google.maps
+      //geocodeLatLng(event, handler.getMap());
       console.log(event.latLng)
     });
+
 
   }
 );
