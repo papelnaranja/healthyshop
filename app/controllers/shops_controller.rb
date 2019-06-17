@@ -15,7 +15,9 @@ class ShopsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
       marker.lat shop.latitude
       marker.lng shop.longitude
-      marker.infowindow shop.name 
+      marker.infowindow "<h5>" + shop.name + "</h5>" + "<p>" + shop.description + "</p>" + "<span class=''>" + shop.tags.name + '</span>'
+      #marker.infowindow shop.description 
+      #marker.infowindow shop.tags
     end    
     @my_shops = []
       @shops.each do |shop|
@@ -93,20 +95,20 @@ class ShopsController < ApplicationController
   def destroy
     @shop.destroy
     respond_to do |format|
-      format.html { redirect_to shops_url, notice: 'Shop was successfully destroyed.' }
+      format.html { redirect_to backoffices_url, notice: 'Shop was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
 
   def add_tag
     @shop.tags << Tag.new(name: params[:name]) 
-    redirect_to shops_path
+    redirect_to backoffices_url
   end
 
   def remove_tag
     tag = Tag.find(params[:tag_id])
     @shop.tags.delete(tag)
-    redirect_to shops_path
+    redirect_to backoffices_url
   end
 
 

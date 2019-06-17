@@ -27,7 +27,8 @@
 
 
 $(document).on('turbolinks:load', function () {
-
+var input = document.getElementById('shop_address');
+var autocomplete = new google.maps.places.Autocomplete(input);
 
 // Crea el Marcador de la posición actual
 function displayOnMap(position){
@@ -69,45 +70,61 @@ handler.buildMap({
     // Crea las tiendas guradadas en la base de datos
     markers = handler.addMarkers(<%= raw @hash.to_json %>);
     // Al hacer click genera una tienda nueva
-    google.maps.event.addListener(handler.getMap(), "click", function(event){
-      var latitude = event.latLng.lat();
-      var longitude = event.latLng.lng();      
-      console.log(latitude, longitude);
-      // Añade las coordenadas al formulario
-      $('#shop_longitude').val(longitude);
-      $('#shop_latitude').val(latitude);
-      var latitudLongitud = {lat: latitude, lng:longitude};
-      // llama a la creción del marcador de tienda
-      addMarker(event.latLng);
-      // Crea la dirección en humano
-      var geocoder = new google.maps.Geocoder;
-      geocoder.geocode({'location': latitudLongitud}, function(results, status) {
-        if (status === 'OK') {
-          if (results[0]) {
-            $('#shop_address').val(results[0].formatted_address);
-            console.log('aqui'+ latitudLongitud.lat + latitudLongitud.lng );
+    google.maps.event.addListener(handler.getMap(), "click", function(event){  
+        var latitude = event.latLng.lat();
+        var longitude = event.latLng.lng();      
+        console.log(latitude, longitude);
+        // Añade las coordenadas al formulario
+        $('#shop_longitude').val(longitude);
+        $('#shop_latitude').val(latitude);
+        var latitudLongitud = {lat: latitude, lng:longitude};
+        // llama a la creción del marcador de tienda
+        addMarker(event.latLng);
+        // Crea la dirección en humano
+        var geocoder = new google.maps.Geocoder;
+        geocoder.geocode({'location': latitudLongitud}, function(results, status) {
+          if (status === 'OK') {
+            if (results[0]) {
+              $('#shop_address').val(results[0].formatted_address);
+              console.log('aqui'+ latitudLongitud.lat + latitudLongitud.lng );
+            } else {
+              window.alert('No results found');
+            }
           } else {
-            window.alert('No results found');
+            window.alert('Geocoder failed due to: ' + status);
           }
-        } else {
-          window.alert('Geocoder failed due to: ' + status);
-        }
-      });
-
-
-
-
-      //google.maps
-      //geocodeLatLng(event, handler.getMap());
-      console.log(event.latLng)
+        });
     });
+    $('#shop_address').focusout(function(){
+      // Crea la direccion en latitud y long
+            var geocoder2 = new google.maps.Geocoder();
+            var address = document.getElementById('shop_address').value;
+            geocoder2.geocode({'address': address}, function(results, status) {
+              if (status === 'OK') {
+                handler.getMap().setCenter(results[0].geometry.location);
+                var marker = new google.maps.Marker({
+                  map: handler.getMap(),
+                  position: results[0].geometry.location
+                });
+              } else {
+                alert('Geocode was not successful for the following reason: ' + status);
+              }
+              lat_address = results[0].geometry.location.lat()
+              lng_address = results[0].geometry.location.lng()
+              $('#shop_longitude').val(lng_address);
+              $('#shop_latitude').val(lat_address);
+            });
 
+
+      });
+    
 
   }
 );
 
 
 // Este código permite marcar solo un punto.
+
 var userMarker;
 function addMarker(location) {
   if (userMarker) {
@@ -120,6 +137,7 @@ function addMarker(location) {
   }
 
 }
+
 
 });
 
