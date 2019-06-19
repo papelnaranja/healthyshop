@@ -15,7 +15,8 @@ class ShopsController < ApplicationController
     @hash = Gmaps4rails.build_markers(@shops) do |shop, marker|
       marker.lat shop.latitude
       marker.lng shop.longitude
-      marker.infowindow "<h5>" + shop.name + "</h5>" + "<p>" + shop.description + "</p>" + "<span class=''>" + shop.tags.name + '</span>'
+      marker.infowindow "<h5>" + shop.name + "</h5>" + "<p>" + shop.description + "</p>" 
+      #"<span class='badge badge-info'>" +   shop.tags[0].name + "</span>"
       #marker.infowindow shop.description 
       #marker.infowindow shop.tags
     end    

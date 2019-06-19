@@ -40,3 +40,11 @@ img.logo-landing {
     background-color: $yellow;
     padding: 2rem 0px;
 }
+
+#shopAlert {
+    display: block;
+    position: fixed;
+    right: 53px;
+    z-index: 999;
+    margin-top: 14px;
+}
