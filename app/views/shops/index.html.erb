@@ -3,13 +3,24 @@
 
   <% if notice %>
 
-    <div class="alert alert-info alert-dismissible fade show" role="alert" id="shopAlert">
+    <div class="alert alert-warning alert-dismissible fade show" role="alert" id="shopAlert">
      <%= notice %>
       <button type="button" class="close" data-dismiss="alert" aria-label="Close">
         <span aria-hidden="true">&times;</span>
       </button>
     </div>
   <% end %>
+  <% if alert %>
+
+    <div class="alert alert-info alert-dismissible fade show" role="alert" id="shopAlert">
+     <%= alert %>
+      <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+  <% end %>
+
+
   <div style='width: 100wv;'>
     <div id="map"></div>
   </div>

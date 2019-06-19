@@ -66,7 +66,7 @@ class ShopsController < ApplicationController
     #@shop.address = Geocoder.coordinates(params[:address])
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to shops_path, notice: 'La tienda se a enviado para su aprobación' }
+        format.html { redirect_to shops_path, alert: 'La tienda se a enviado para su aprobación' }
         format.json { render :show, status: :created, location: @shop }
       else
         format.html { render :new }

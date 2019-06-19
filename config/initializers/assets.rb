@@ -11,6 +11,13 @@ Rails.application.config.assets.paths << Rails.root.join('node_modules')
 Rails.application.config.assets.paths << Rails.root.join('vendor','ico')
 Rails.application.config.assets.paths << Rails.root.join('vendor','images')
 Rails.application.config.assets.paths << Rails.root.join('vendor','css')
+Rails.application.config.assets.paths << Rails.root.join('node_modules','datatables','media','images')
+Rails.application.config.assets.paths << Rails.root.join('node_modules','datatables','media','images')
+Rails.application.config.assets.paths << Rails.root.join('node_modules','datatables','media','images')
+Rails.application.config.assets.paths << Rails.root.join('node_modules','datatables','media','images')
+Rails.application.config.assets.paths << Rails.root.join('node_modules','datatables','media','images')
+
+
 
 
 # Precompile additional assets.
@@ -20,3 +27,9 @@ Rails.application.config.assets.paths << Rails.root.join('vendor','css')
 Rails.application.config.assets.precompile += %w( *.jpg *.png *.gif *.svg *.ico)
 Rails.application.config.assets.precompile += %w(*.eot *.ttf *.woff *otf)
 Rails.application.config.assets.precompile += %w( chartkick.js )
+Rails.application.config.assets.precompile += %w( sort_desc.png )
+Rails.application.config.assets.precompile += %w( sort_desc_disabled.png )
+Rails.application.config.assets.precompile += %w( sort_both.png )
+Rails.application.config.assets.precompile += %w( sort_asc.png )
+Rails.application.config.assets.precompile += %w( sort_asc_disabled.png )
+

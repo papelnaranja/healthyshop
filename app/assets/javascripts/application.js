@@ -21,7 +21,7 @@
 //= require chartkick
 //= require Chart.bundle
 //= require owl.carousel2/dist/owl.carousel
-// datatables/media/js/jquery.dataTables
+//= require datatables/media/js/jquery.dataTables
 //= require_tree .
 
 
@@ -52,6 +52,7 @@ $(document).on('turbolinks:load', function () {
             }
         }
     })
-   
+    $('#shopsTable').DataTable();
+    $('#UsersTable').DataTable();
     //$("#main-nav").sticky({ topSpacing: 0 });
 })
