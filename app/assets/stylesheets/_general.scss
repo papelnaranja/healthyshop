@@ -1,19 +1,33 @@
 
+body {
+    font-family: $open;
+}
+h1,h2,h3,h4,h5,h6 {
+    font-family: $dosis;
+    font-weight: bold;   
+
+}
+th {
+    font-family: $dosis; 
+}
+
+
 .mt-4-rem {
     margin-top:4rem;
 }
 
 a {
     color: $secondary;
+    //font-family: $dosis;
     &:hover, &:active , &:focus {
     color:darken($secondary , 10%);
-
     }
 }
 
 .btn-primary {
     background-color: $secondary;
     color: white;
+    font-family: $dosis;
     border-color: $secondary;
     &:hover, &:active , &:focus {
         background-color: darken($secondary , 10%);
