@@ -6,6 +6,7 @@
     "bootstrap": "^4.3.1",
     "chart.js": "^2.8.0",
     "chartkick": "^3.1.0",
+    "datatables": "^1.10.18",
     "gmaps": "^0.4.24",
     "jquery": "^3.4.1",
     "jquery.sticky": "^0.2.1",

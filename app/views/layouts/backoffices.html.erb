@@ -8,12 +8,11 @@
 
     <link rel="shortcut icon" href="<%= asset_path 'favicon.ico' %>">
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
-    
-  
-    <%= javascript_include_tag "https://www.gstatic.com/charts/loader.js" , 'data-turbolinks-track': 'reload'  %>
 
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
- 
+     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" >
+     <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js" ></script> 
+
   </head>
   <body>
   
@@ -25,7 +24,12 @@
     </div>
     </div>
     
-  
+  <script>
+$(document).on('turbolinks:load', function () {
+    $('#shopsTable').DataTable();
+    $('#UsersTable').DataTable();
+} );
+</script>
 
   </body>
 </html>
