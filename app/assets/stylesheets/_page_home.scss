@@ -1,14 +1,28 @@
 #main {
     display:flex;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center left;
+
     background-size: cover;
     min-height: 100vh;
+    @include min-lg {
+    background-position: center;
+    }
 }
 
 .box-landing {
     max-width: 100%;
     width: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    @include min-lg {
+        display:block;
+     width: 500px;
+
+    }
+    max-width: 100%;
 }
 img.logo-landing {
     width: 250px;
