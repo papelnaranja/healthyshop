@@ -4,8 +4,12 @@
     <div class="panel-section">
         <form action="<%= shops_path %>" method="get" class="my-3">
         <div class="form-group">
-            <label for="q">Busqueda </label>
-            <input type="text" name="q" class="form-control">
+        <div class="input-group mb-3">
+            <input type="text" class="form-control" placeholder="Buscar"  name="q">
+                <div class="input-group-append">
+                    <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                </div>
+            </div>
         </div>
         </form>
     </div>
@@ -13,30 +17,36 @@
         <div class="box">
             <div class="form-wrap">
             <%= form_with(model: @shop , local: true, scope: "shop") do |form| %>
+             <% if current_user.role == 'admin'  %>
+                <div class="form-group ">
+                    <%= form.label :longitude %>
+                    <%= form.text_field :longitude ,class:'form-control' %>
+                </div>
+                <div class="form-group">
+                    <%= form.label :latitude %>
+                    <%= form.text_field :latitude ,class:'form-control' %>
+                </div>
+            <% else %>
+                <div class="form-group ">
+                    <%= form.hidden_field :longitude  %>
+                </div>
+                <div class="form-group">
+                    <%= form.hidden_field :latitude %>
+                </div>
+            <% end %>
+
+
 
             <div class="form-group">
-                <%= form.label :longitude %>
-                <%= form.text_field :longitude ,class:'form-control' %>
-            </div>
-
-            <div class="form-group">
-                <%= form.label :latitude %>
-                <%= form.text_field :latitude ,class:'form-control' %>
-            </div>
-
-            <div class="form-group">
-                <%= form.label :name %>
+                <%= form.label :name, 'Nombre de la tienda' %>
                 <%= form.text_field :name ,class:'form-control' %>
             </div>
 
-            <%# <div class="form-group">
-                <%= form.label :photo %>
-                <%# form.file_field :photo ,class:'form-control' %>
-            <%# </div> %> 
 
             <div class="form-group">
-                <%= form.label :description %>
-                <%= form.text_field :description ,class:'form-control' %>
+                <%= form.label :description, 'Descripción' %>
+                <%= form.text_area :description ,class:'form-control' %>
+                <small>Agrega #hastags para mejorar la clasificación de la tienda!</small>
             </div>
             <% if current_user.role == "admin" %>
                 <div class="form-group">
@@ -46,10 +56,12 @@
             <% end %>
             
             <div class="form-group">
-                <%= form.label :address %>
+                <%= form.label :address, 'Dirección' %>
                 <%= form.text_field :address ,class:'form-control' %>
             </div>
-
+            
+            <%# render 'tags' %>
+        
             <div class="form-group">
                 <%= form.submit 'Nueva tienda' , class:'btn btn-primary' %>
                 <%# link_to 'New Shop', new_shop_path %>

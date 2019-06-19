@@ -9,6 +9,7 @@
     "gmaps": "^0.4.24",
     "jquery": "^3.4.1",
     "jquery.sticky": "^0.2.1",
+    "owl.carousel2": "^2.2.1",
     "underscore": "^1.9.1"
   },
   "devDependencies": {

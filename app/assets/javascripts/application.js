@@ -20,6 +20,7 @@
 //= require jquery.sticky/dist/jquery.sticky
 //= require chartkick
 //= require Chart.bundle
+//= require owl.carousel2/dist/owl.carousel
 //= require_tree .
 
 $(document).on('turbolinks:load', function () {
@@ -33,5 +34,22 @@ $(document).on('turbolinks:load', function () {
         $('#sidepanel').show();
         $('body').prependTo
     });
+    $('.owl-carousel').owlCarousel({
+        loop: true,
+        margin: 5,
+        nav: true,
+        responsive: {
+            0: {
+                items: 1
+            },
+            600: {
+                items: 1
+            },
+            1000: {
+                items: 3
+            }
+        }
+    })
+
     //$("#main-nav").sticky({ topSpacing: 0 });
 })

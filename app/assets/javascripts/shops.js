@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+   
+
     $('[name=q]').keyup(function () {
 
         if ($(this).val().length > 2) {

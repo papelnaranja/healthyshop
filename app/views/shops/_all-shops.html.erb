@@ -1,37 +1,35 @@
-<div class="table-section">
-  <div class="container-fluid">
 
-<table class="table-striped table">
-  <thead>
-    <tr>
 
-      <th>Nombre</th>
-      <th>Descripción</th>
-      <th>Dirección</th>
-      <th>Etiqueta</th>
-
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @shops.each do |shop| %>
-      <tr>
-        <td><%= shop.name %></td>
-        <td><%= shop.description %></td>
-        <td><%= shop.address %></td>
-        <td>
+<div class="owl-carousel owl-theme card-deck">
+ <% @shops.each do |shop| %>
+  <div class="item card">
+    <div class="card-body">
+      <h5><%= shop.name %></h5>
+      <p class="card-description"><%= shop.description %></p>
+      <p class="card-address"><%= shop.address %></p>
+      <div class="tags-group">
         <% shop.tags.each do |tag| %>
             <span class="badge badge-info" > <%= tag.name %> </span>
-        <% end %>       
-        </td>
-        <td><%= link_to 'Show', shop %></td>
-        <td><%= link_to 'Edit', edit_shop_path(shop) %></td>
-        <td><% link_to 'Destroy', shop, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+        <% end %>  
+      </div>
 
-</div>
+    </div>
+     <% if current_user.role == 'admin' %>
+      <ul class="list-group list-group-flush">
+          <li class="list-group-item"><strong>Latitud: </strong><%= shop.latitude%></li>
+          <li class="list-group-item"><strong>Longitud: </strong><%= shop.longitude%></li>
+        </ul>
+    <% end %>
+    <div class="card-footer">
+        <% if current_user.role == 'admin' %>
+          <span><%= link_to 'Show', shop %></span> |
+          <span><%= link_to 'Edit', edit_shop_path(shop) %></span> 
+        <% end %>  
+        <% if current_user.id == shop.user_id  %>
+          <span><%= link_to 'Show', shop %></span> |
+          <span><%= link_to 'Edit', edit_shop_path(shop) %></span>
+        <% end %>
+    </div>
+  </div>
+  <% end %>
 </div>

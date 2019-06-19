@@ -1,0 +1,7 @@
+<div class="form-group">
+<%= form.fields_for :tags_attributes do |f|  %>
+    <%= f.label :name, 'Etiquetas' %>
+    <%= f.text_field :name ,class:'form-control' %>
+    <span class="small-text">Separar etiquetas por comas</span>
+<% end %>
+</div>

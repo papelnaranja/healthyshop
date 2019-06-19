@@ -19,10 +19,6 @@
   <%= @shop.name %>
 </p>
 
-<p>
-  <strong>Photo:</strong>
-  <%= @shop.photo %>
-</p>
 
 <p>
   <strong>Description:</strong>
@@ -38,6 +34,7 @@
   <strong>Address:</strong>
   <%= @shop.address %>
 </p>
+
 <%= link_to 'Edit', edit_shop_path(@shop) %> |
 <%= link_to 'Back', shops_path %>
 

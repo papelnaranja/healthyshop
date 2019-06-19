@@ -26,7 +26,7 @@ class ShopsController < ApplicationController
       end
     end
     @shops = if params[:q].present?
-       Shop.joins(:tags).where("shops.name like ? OR tags.name like ?", params[:q], params[:q])
+       Shop.joins(:tags).where("shops.name ilike ? OR tags.name ilike ?", "%#{params[:q]}%", "%#{params[:q]}%")
     else
       Shop.all.published  
     end
@@ -56,13 +56,16 @@ class ShopsController < ApplicationController
   # POST /shops
   # POST /shops.json
   def create
-
     @shop = Shop.new(shop_params)
     @shop.user_id = current_user.id
+    #tags = params[:tags].split(',')
+    #tags.each do |tag|
+      #@shop.tags << Tag.new(name:tag) 
+    #end
     #@shop.address = Geocoder.coordinates(params[:address])
     respond_to do |format|
       if @shop.save
-        format.html { redirect_to @shop, notice: 'Shop was successfully created.' }
+        format.html { redirect_to shops_path, notice: 'La tienda se a enviado para su aprobación' }
         format.json { render :show, status: :created, location: @shop }
       else
         format.html { render :new }
@@ -121,17 +124,10 @@ class ShopsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def shop_params
-      params.require(:shop).permit(:longitude, :latitude, :name, :photo, :description, :state, :address)
-    end
+      params.require(:shop).permit(
+        :longitude, :latitude, :name, :description, :state, :address, 
+        #tags_attributes:[:name, :id]
+        )    
+      end
 
-    # def edit_my_shop 
-    #   if @shop.user_id != current_user.id && current_user.role != "admin"
-    #     redirect_to shops_url
-    #   end
-    # end
-    # def delete_shop
-    #   if current_user.role != "admin"
-    #     redirect_to shops_url
-    #   end
-    # end
 end
