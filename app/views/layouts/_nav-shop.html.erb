@@ -1,6 +1,6 @@
 
 <nav  id="navigation" class="navbar navbar-expand-lg">
-  <button id="mostrar" ><i class="fa fa-align-left" aria-hidden="true"></i></button>
+  <button id="mostrar" class="btn"><i class="fa fa-align-left" aria-hidden="true"></i></button>
 
   <a class="navbar-brand" href="<%= root_path %>">
     <img src="<%= asset_path('logo-1.png') %>" alt="logo" class="nav-brand">
@@ -28,11 +28,7 @@
       <% end %>
       <% if user_signed_in? %>
         <li class="nav-item d-flex justify-content-start">
-          <%# if current_user.avatar.attached? %>
-              <%# image_tag current_user.sized(:avatar) | current_user.avatar   %>
-              <div class="avatar"><%# image_tag current_user.sized(:avatar) %></div> 
-          <%#end %>
-            <span><%= current_user.name %> (<%= current_user.role %>)</span>
+          <a href="<%= edit_user_registration_path(current_user.id) %>"><span><%= current_user.name %> (<%= current_user.role %>)</span></a>
         </li>
         <li class="nav-item">
           <a class="nav-link" href="<%= shops_path %>"> Ver app</a>

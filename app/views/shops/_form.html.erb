@@ -3,46 +3,46 @@
     <div id="error_explanation">
       <h2><%= pluralize(shop.errors.count, "error") %> prohibited this shop from being saved:</h2>
 
-      <ul>
+     
       <% shop.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
+        <div class="alert alert-error"><%= message %></div>
       <% end %>
-      </ul>
+    
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :longitude %>
-    <%= form.text_field :longitude %>
+    <%= form.text_field :longitude, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :latitude %>
-    <%= form.text_field :latitude %>
+    <%= form.text_field :latitude, class:'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="form-group">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class:'form-control' %>
   </div>
   
-  <div class="field">
+  <div class="form-group">
     <%= form.label :description %>
-    <%= form.text_field :description %>
+    <%= form.text_area :description, class:'form-control' %>
   </div>
   <% if current_user.role == "admin" %>
-    <div class="field">
+    <div class="form-group">
       <%= form.label :state %>
-      <%= form.select :state, options_for_select([["Draft", :draft],["Publicado",:published],["Escondido",:hidden]], params[:state] ) %>
+      <%= form.select :state, options_for_select([["Draft", :draft],["Publicado",:published],["Escondido",:hidden]], params[:state] ) , class:'form-control' %>
     </div>
   <% end %>
   
-  <div class="field">
+  <div class="form-group">
     <%= form.label :address %>
-    <%= form.text_field :address %>
+    <%= form.text_field :address , class:'form-control'%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit class:'btn btn-primary'%>
   </div>
 <% end %>

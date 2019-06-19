@@ -17,3 +17,10 @@ div#sidepanel {
 #sidepanel img {
     max-width:200px;
 }
+
+.sidepanel-header {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;    
+    
+}

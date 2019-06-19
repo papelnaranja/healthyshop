@@ -20,16 +20,12 @@
           <li class="list-group-item"><strong>Longitud: </strong><%= shop.longitude%></li>
         </ul>
     <% end %>
+     <% if current_user.role == 'admin' %>
     <div class="card-footer">
-        <% if current_user.role == 'admin' %>
           <span><%= link_to 'Show', shop %></span> |
-          <span><%= link_to 'Edit', edit_shop_path(shop) %></span> 
-        <% end %>  
-        <% if current_user.id == shop.user_id  %>
-          <span><%= link_to 'Show', shop %></span> |
-          <span><%= link_to 'Edit', edit_shop_path(shop) %></span>
-        <% end %>
+          <span><%= link_to 'Edit', edit_shop_path(shop) %></span>        
     </div>
+     <% end %>
   </div>
   <% end %>
 </div>

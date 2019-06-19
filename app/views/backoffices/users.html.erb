@@ -4,11 +4,10 @@
 <thead>
     <tr>
       <th>ID</th>
-      <th>avatar</th>
-      <th>Name</th>
-      <th>Lastname</th>
+      <th>Nombre</th>
+      <th>Apllido</th>
+      <th>Email</th>
       <th>role</th>
-      <th>Provider</th>
       <th colspan="3"></th>
     </tr>
 </thead>
@@ -17,15 +16,12 @@
  <% @users.each do |user| %>
       <tr>
         <td><%= user.id %></td>
-        <td><%# image_tag user.avatar %></td>
         <td><%= user.name %></td>
         <td><%= user.lastname %></td>
         <td><%= user.email %></td>
         <td><%= user.role %></td>
-        <td><%# user.provider %></td>
-        <td><%# link_to 'Show', user %></td>
-        <td><%= link_to 'Edit', edit_user_path(user) %></td>
-        <td><%= link_to 'Destroy', user, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= link_to 'Editar', edit_user_registration_path(user) %></td>
+        <td><%= link_to 'Borrar', user ,method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
     </tbody>
